@@ -1,0 +1,15 @@
+<template>
+    <div>
+        <header class="bg-indigo-500 text-white">
+            <nav class="flex justify-between items-center max-w-screen-lg p-4 mx-auto">
+                <div class="space-x-6">
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                </div>
+            </nav>
+        </header>
+        <main class="p-4 max-w-screen-lg mx-auto">
+            <slot/>
+        </main>
+    </div>
+</template>

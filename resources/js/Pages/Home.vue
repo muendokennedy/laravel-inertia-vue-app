@@ -1,7 +1,8 @@
+<script setup>
+</script>
+
 <template>
-    <div>
-        <h2 class="text-2xl font-semibold">Hello Kennedy this is vue from inertiajs</h2>
-    </div>
+        <h2 class="text-2xl font-semibold">Hello from inertia home</h2>
 </template>
 <style scoped>
 </style>
