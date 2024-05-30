@@ -14,3 +14,10 @@ Route::get('/register', function(){
 
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::get('/login', function(){
+    return Inertia::render('Auth/Login');
+})->name('login');
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

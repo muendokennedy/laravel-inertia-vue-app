@@ -8,7 +8,13 @@
                     <Link class="nav-link" :href="route('home')">Home</Link>
                 </div>
                 <div class="space-x-6">
-                    <Link class="nav-link" :href="route('register')">Register</Link>
+                    <div>
+                        <Link class="nav-link" :href="route('logout')">Logout</Link>
+                    </div>
+                    <div>
+                        <Link class="nav-link" :href="route('register')">Register</Link>
+                        <Link class="nav-link" :href="route('login')">Login</Link>
+                    </div>
                 </div>
             </nav>
         </header>
