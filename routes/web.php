@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Home', ['users' => User::paginate(5)]);
 })->name('home');
 
 Route::middleware('auth')->group(function(){
