@@ -13,10 +13,6 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         // Store the image of file into disk
-
-
-
-
         $userData = $request->validate([
             'avatar' => 'file | nullable | max:300',
             'name' => 'required | max:255',
@@ -32,7 +28,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('greet', 'Welcome to inertia vue app');
 
     }
 
@@ -47,7 +43,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard'));
+        return redirect()->intended(route('dashboard'))->with('greet', 'You have logged in successfully');
 
        }
 
