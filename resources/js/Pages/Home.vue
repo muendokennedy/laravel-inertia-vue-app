@@ -6,14 +6,17 @@ import { throttle, debounce } from 'lodash';
 
 const props = defineProps({
     users: Object,
-    searchTerm: String
+    searchTerm: String,
+    can: Object
 });
 
 const search = ref(props.searchTerm);
 
+
+
 watch(search, debounce(
     (searchTerm) =>
-    router.get('/', {search: searchTerm}, {preserveState: true}),
+    router.get('/', {search: searchTerm.trim()}, {preserveState: true}),
     1000
 ))
 
@@ -44,7 +47,7 @@ const getDate = (date) =>
             <th>Name</th>
             <th>Email</th>
             <th>Registration Date</th>
-            <th>Delete</th>
+            <th v-if="can.delete_user">Delete</th>
           </tr>
         </thead>
 
@@ -56,7 +59,7 @@ const getDate = (date) =>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ getDate(user.created_at) }}</td>
-            <td>
+            <td v-if="can.delete_user">
               <button class="bg-red-500 p-2 rounded-md text-white">Delete</button>
             </td>
           </tr>
