@@ -1,9 +1,21 @@
 <script setup>
 import PaginationLinks from './components/PaginationLinks.vue';
+import { ref, watch } from 'vue';
+import { router } from '@inertiajs/vue3';
+import { throttle, debounce } from 'lodash';
 
-defineProps({
-    users: Object
+const props = defineProps({
+    users: Object,
+    searchTerm: String
 });
+
+const search = ref(props.searchTerm);
+
+watch(search, debounce(
+    (searchTerm) =>
+    router.get('/', {search: searchTerm}, {preserveState: true}),
+    1000
+))
 
 // Format date
 const getDate = (date) =>
@@ -21,7 +33,7 @@ const getDate = (date) =>
     <div>
       <div class="flex justify-end mb-4">
         <div class="w-1/4">
-          <input type="search" placeholder="Search"/>
+          <input type="search" placeholder="Search" v-model="search"/>
         </div>
       </div>
 
