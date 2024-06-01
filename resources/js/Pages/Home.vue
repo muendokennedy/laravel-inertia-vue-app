@@ -1,4 +1,6 @@
 <script setup>
+import PaginationLinks from './components/PaginationLinks.vue';
+
 defineProps({
     users: Object
 });
@@ -51,8 +53,7 @@ const getDate = (date) =>
 
       <!-- Pagination Links -->
       <div>
-        <Link v-for="link in users.links" :key="link.label" v-html="link.label" :href="link.url" class="p-1 mx-1" :class="{'text-slate-300' : !link.url, 'text-blue-500 font-medium' : link.active}"></Link>
-        <p class="text-slate-600 my-2">Showing {{ users.from }} to {{ users.to }} of {{  users.total }}</p>
+          <PaginationLinks :paginator="users"/>
       </div>
     </div>
   </template>
